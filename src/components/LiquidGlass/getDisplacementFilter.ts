@@ -17,12 +17,12 @@ export type DisplacementOptions = {
 
 /**
  * 변위 필터를 생성합니다.
- * 
+ *
  * @description
  * SVG feDisplacementMap 필터를 생성하여 유리의 굴절 효과를 구현합니다.
  * 실험적인 "색수차(chromatic aberration)" 효과를 포함하며,
  * 필요하지 않은 경우 첫 번째 feColorMatrix부터 마지막 feBlend까지 제거할 수 있습니다.
- * 
+ *
  * @param height - 유리 요소의 높이 (픽셀 단위)
  * @param width - 유리 요소의 너비 (픽셀 단위)
  * @param radius - 모서리 둥글기 반경 (픽셀 단위)
@@ -30,7 +30,7 @@ export type DisplacementOptions = {
  * @param strength - 굴절 효과의 강도 (기본값: 100)
  * @param chromaticAberration - 색수차 효과의 강도 (기본값: 0)
  * @returns SVG 필터가 포함된 data URI 문자열
- * 
+ *
  * Creating the displacement filter.
  * The file complexity is due to the experimental "chromatic aberration" effect;
  * filters from first `feColorMatrix` to last `feBlend` can be removed if the effect is not needed.

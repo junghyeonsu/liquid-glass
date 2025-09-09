@@ -2,18 +2,18 @@ import type { DisplacementOptions } from "./getDisplacementFilter";
 
 /**
  * feDisplacementMap 필터에서 사용할 변위 맵을 생성합니다.
- * 
+ *
  * @description
  * 유리의 굴절 효과를 구현하기 위한 변위 맵 이미지를 SVG로 생성합니다.
  * 그라디언트는 요소의 반경을 고려하여 설계되었으며,
  * 각도 곡선의 중간에서 시작하고 끝나도록 설정되어 있습니다.
- * 
+ *
  * @param height - 유리 요소의 높이 (픽셀 단위)
  * @param width - 유리 요소의 너비 (픽셀 단위)
  * @param radius - 모서리 둥글기 반경 (픽셀 단위)
  * @param depth - 유리의 깊이/두께 (픽셀 단위)
  * @returns 변위 맵이 포함된 SVG data URI 문자열
- * 
+ *
  * Creating the displacement map that is used by feDisplacementMap filter.
  * Gradients take into account the radius of the element.
  * This is why they start and end in the middle of the angle curve.

@@ -3,7 +3,10 @@ Apple's Liquid Glass seems to add a certain level of reflection in addition to r
 The following code is only an approximation of the appearance of the edge and opacity of an element.
 */
 .box {
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: inset 0 0 4px 0px white;
+  background: var(--glass-bg);
+  box-shadow: inset 0 0 4px 0px var(--glass-shadow);
   cursor: pointer;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }

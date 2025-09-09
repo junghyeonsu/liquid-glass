@@ -14,12 +14,12 @@ type LiquidGlassProps = DisplacementOptions & {
 
 /**
  * 액체 유리 효과를 구현하는 React 컴포넌트
- * 
+ *
  * @description
  * CSS backdrop-filter와 SVG feDisplacementMap을 조합하여
  * 실제 유리처럼 보이는 굴절 효과를 생성합니다.
  * 클릭 시 유리 깊이가 변경되어 동적인 효과를 제공합니다.
- * 
+ *
  * @see https://codesandbox.io/p/sandbox/liquid-glass-in-css-and-svg-g3mwqp?file=%2Fsrc%2FApp.tsx%3A14%2C1-20%2C24&from-embed
  * @see https://medium.com/ekino-france/liquid-glass-in-css-and-svg-839985fcb88d
  */

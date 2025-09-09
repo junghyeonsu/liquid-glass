@@ -2,17 +2,17 @@ import { createImageData } from "canvas";
 
 /**
  * 유리 표면의 굴절으로 인한 빛의 변위를 사전 계산합니다.
- * 
+ *
  * @description
  * 스넬의 법칙(Snell's Law)을 사용하여 빛이 유리를 통과할 때 얼마나 휘어지는지 계산합니다.
  * 이 함수는 베젤(유리 가장자리의 곡면) 영역에서의 굴절을 1차원으로 사전 계산하여,
  * 나중에 2D 변위 맵을 생성할 때 재사용할 수 있도록 합니다.
- * 
+ *
  * 물리학적 원리:
  * 1. 빛이 공기(n=1.0)에서 유리(n=1.5)로 진입할 때 굴절각이 변함
  * 2. 표면의 기울기(법선 벡터)에 따라 굴절 방향이 결정됨
  * 3. 유리 두께와 베젤 너비에 따라 최종 변위가 결정됨
- * 
+ *
  * @param glassThickness - 유리의 두께 (픽셀 단위)
  * @param bezelWidth - 베젤(곡면 가장자리)의 너비 (픽셀 단위)
  * @param bezelHeightFn - 베젤의 높이 프로파일을 정의하는 함수 (0~1 입력, 0~1 출력)
@@ -49,25 +49,25 @@ export function calculateDisplacementMap(
   }
 
   return Array.from({ length: samples }, (_, i) => {
-    const x = i / samples;  // 0~1 범위의 베젤 위치
-    const y = bezelHeightFn(x);  // 해당 위치의 높이
+    const x = i / samples; // 0~1 범위의 베젤 위치
+    const y = bezelHeightFn(x); // 해당 위치의 높이
 
     // 표면의 기울기(미분) 계산
     const dx = x < 1 ? 0.0001 : -0.0001;
     const y2 = bezelHeightFn(x + dx);
     const derivative = (y2 - y) / dx;
-    
+
     // 법선 벡터 계산 (표면에 수직인 방향)
     const magnitude = Math.sqrt(derivative * derivative + 1);
     const normal = [-derivative / magnitude, -1 / magnitude];
-    
+
     // 굴절 방향 계산
     const refracted = refract(normal[0], normal[1]);
 
     if (!refracted) {
-      return 0;  // 전반사 발생 시 변위 없음
+      return 0; // 전반사 발생 시 변위 없음
     }
-    
+
     // 빛이 유리를 통과하는 거리 계산
     const remainingHeightOnBezel = y * bezelWidth;
     const remainingHeight = remainingHeightOnBezel + glassThickness;
@@ -79,17 +79,17 @@ export function calculateDisplacementMap(
 
 /**
  * 2D 변위 맵 이미지를 생성합니다.
- * 
+ *
  * @description
  * 사전 계산된 1D 변위 데이터를 사용하여 실제 SVG 필터에서 사용할 2D 변위 맵을 생성합니다.
  * 이 맵은 각 픽셀이 얼마나, 어느 방향으로 이동해야 하는지를 RGB 채널에 인코딩합니다.
- * 
+ *
  * 변위 맵 인코딩:
  * - R 채널: X축 변위 (0=왼쪽, 128=중립, 255=오른쪽)
  * - G 채널: Y축 변위 (0=위, 128=중립, 255=아래)
  * - B 채널: 사용 안함
  * - A 채널: 투명도 (항상 255)
- * 
+ *
  * @param canvasWidth - 캔버스 너비
  * @param canvasHeight - 캔버스 높이
  * @param objectWidth - 유리 객체의 너비

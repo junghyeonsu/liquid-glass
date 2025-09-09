@@ -1,3 +1,29 @@
+:root[data-theme="light"] {
+  --bg-color: #ffffff;
+  --text-color: #2c3e50;
+  --text-color-heading: #1a1a2e;
+  --text-color-subheading: #16213e;
+  --text-color-epilogue: #666;
+  --border-color: #e0e0e0;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-shadow: white;
+  --toggle-bg: rgba(255, 255, 255, 0.95);
+  --toggle-border: rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="dark"] {
+  --bg-color: #0f0f0f;
+  --text-color: #e0e0e0;
+  --text-color-heading: #f5f5f5;
+  --text-color-subheading: #eeeeee;
+  --text-color-epilogue: #a0a0a0;
+  --border-color: #333333;
+  --glass-bg: rgba(20, 20, 20, 0.3);
+  --glass-shadow: rgba(100, 100, 100, 0.4);
+  --toggle-bg: rgba(30, 30, 30, 0.95);
+  --toggle-border: rgba(255, 255, 255, 0.2);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +39,8 @@ body {
 body {
   font-family: "Georgia", "Nanum Myeongjo", serif;
   min-height: 100vh;
+  background: var(--bg-color);
+  transition: background 0.3s ease;
 }
 
 .app {
@@ -47,25 +75,28 @@ body {
 }
 
 .text-content {
-  color: #2c3e50;
+  color: var(--text-color);
   line-height: 1.8;
+  transition: color 0.3s ease;
 }
 
 .text-content h1 {
   font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #1a1a2e;
+  color: var(--text-color-heading);
   text-align: center;
   font-weight: 300;
   letter-spacing: 2px;
+  transition: color 0.3s ease;
 }
 
 .text-content h2 {
   font-size: 1.8rem;
   margin: 2.5rem 0 1.5rem;
-  color: #16213e;
+  color: var(--text-color-subheading);
   font-weight: 400;
   letter-spacing: 1px;
+  transition: color 0.3s ease;
 }
 
 .text-content p {
@@ -85,8 +116,11 @@ body {
   text-indent: 0 !important;
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid #e0e0e0;
-  color: #666;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-color-epilogue);
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 @media (max-width: 768px) {
@@ -105,4 +139,12 @@ body {
   .text-content p {
     font-size: 1rem;
   }
+}
+
+.liquid-glass-filter-box {
+  background: var(--glass-bg);
+  box-shadow: inset 0 0 4px 0px var(--glass-shadow);
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
