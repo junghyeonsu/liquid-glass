@@ -1,0 +1,108 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Georgia", "Nanum Myeongjo", serif;
+  min-height: 100vh;
+}
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 20px;
+}
+
+.content-container {
+  width: 100%;
+  max-width: 600px;
+  padding: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.liquid-glass-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 2;
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.text-content {
+  color: #2c3e50;
+  line-height: 1.8;
+}
+
+.text-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #1a1a2e;
+  text-align: center;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.text-content h2 {
+  font-size: 1.8rem;
+  margin: 2.5rem 0 1.5rem;
+  color: #16213e;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.text-content p {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  text-align: justify;
+  text-indent: 2em;
+}
+
+.text-content p:first-of-type {
+  text-indent: 0;
+}
+
+.epilogue {
+  font-style: italic;
+  text-align: center !important;
+  text-indent: 0 !important;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    padding: 40px 30px;
+  }
+
+  .text-content h1 {
+    font-size: 2rem;
+  }
+
+  .text-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .text-content p {
+    font-size: 1rem;
+  }
+}
